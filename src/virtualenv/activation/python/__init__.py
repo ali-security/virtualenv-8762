@@ -10,13 +10,18 @@ class PythonActivator(ViaTemplateActivator):
     def templates(self):
         yield Path("activate_this.py")
 
+    @staticmethod
+    def quote(string):
+        return repr(string)
+
     def replacements(self, creator, dest_folder):
         replacements = super().replacements(creator, dest_folder)
         lib_folders = OrderedDict((os.path.relpath(str(i), str(dest_folder)), None) for i in creator.libs)
         win_py2 = creator.interpreter.platform == "win32" and creator.interpreter.version_info.major == 2
+        lib_folders_str = os.pathsep.join(lib_folders.keys())
         replacements.update(
             {
-                "__LIB_FOLDERS__": os.pathsep.join(lib_folders.keys()),
+                "__LIB_FOLDERS__": lib_folders_str,
                 "__DECODE_PATH__": ("yes" if win_py2 else ""),
             },
         )

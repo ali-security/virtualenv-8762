@@ -34,12 +34,11 @@ def make_app_data(folder, **kwargs):
     if is_read_only:
         return ReadOnlyAppData(folder)
 
-    if not os.path.isdir(folder):
-        try:
-            os.makedirs(folder)
-            logging.debug("created app data folder %s", folder)
-        except OSError as exception:
-            logging.info("could not create app data folder %s due to %r", folder, exception)
+    try:
+        os.makedirs(folder, exist_ok=True)
+        logging.debug("created app data folder %s", folder)
+    except OSError as exception:
+        logging.info("could not create app data folder %s due to %r", folder, exception)
 
     if os.access(folder, os.W_OK):
         return AppDataDiskFolder(folder)

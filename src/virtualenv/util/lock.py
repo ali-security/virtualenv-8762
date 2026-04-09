@@ -13,11 +13,10 @@ from filelock import FileLock, Timeout
 class _CountedFileLock(FileLock):
     def __init__(self, lock_file):
         parent = os.path.dirname(lock_file)
-        if not os.path.isdir(parent):
-            try:
-                os.makedirs(parent)
-            except OSError:
-                pass
+        try:
+            os.makedirs(parent, exist_ok=True)
+        except OSError:
+            pass
         super().__init__(lock_file)
         self.count = 0
         self.thread_safe = RLock()
@@ -109,7 +108,7 @@ class ReentrantFileLock(PathLockBase):
         # a lock, but that lock might then become expensive, and it's not clear where that lock should live.
         # Instead here we just ignore if we fail to create the directory.
         try:
-            os.makedirs(str(self.path))
+            os.makedirs(str(self.path), exist_ok=True)
         except OSError:
             pass
         try:

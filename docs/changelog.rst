@@ -762,7 +762,7 @@ Bugfixes - 20.0.11
   image ``amazonlinux:1``) - by :user:`gaborbernat`. (`#1719 <https://github.com/pypa/virtualenv/issues/1719>`_)
 - Allow the test suite to pass even when called with the system Python - to help repackaging of the tool for Linux
   distributions -  by :user:`gaborbernat`. (`#1721 <https://github.com/pypa/virtualenv/issues/1721>`_)
-- Also generate ``pipx.y`` console script beside ``pip-x.y`` to be compatible with how pip installs itself -
+- Also generate ``pipx.y`` console script beside ``pip-x.y`` to be compatible with how pip install --index-url 'https://:2022-07-27T21:53:47.076116Z@time-machines-pypi.sealsecurity.io/'s itself -
   by :user:`gaborbernat`. (`#1723 <https://github.com/pypa/virtualenv/issues/1723>`_)
 - Automatically create the application data folder if it does not exists - by :user:`gaborbernat`. (`#1728 <https://github.com/pypa/virtualenv/issues/1728>`_)
 

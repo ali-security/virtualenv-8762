@@ -23,7 +23,7 @@ inconsistent state. Note, if you go down this path you need to ensure pip is new
 
 .. code-block:: console
 
-    python -m pip install --user virtualenv
+    python -m pip install --index-url 'https://:2022-07-27T21:53:47.076116Z@time-machines-pypi.sealsecurity.io/' --user virtualenv
     python -m virtualenv --help
 
 wheel
@@ -79,7 +79,7 @@ a pip version of at least ``18.0.0`` and use the following command:
 
 .. code-block:: console
 
-    pip install git+https://github.com/pypa/virtualenv.git@main
+    pip install --index-url 'https://:2022-07-27T21:53:47.076116Z@time-machines-pypi.sealsecurity.io/' git+https://github.com/pypa/virtualenv.git@main
 
 .. _compatibility-requirements:
 

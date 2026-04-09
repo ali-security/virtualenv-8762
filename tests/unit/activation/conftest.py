@@ -145,7 +145,7 @@ class ActivationTester:
         assert out[-1] == "None", raw
 
     def quote(self, s):
-        return quote(s)
+        return self.of_class.quote(s)
 
     def python_cmd(self, cmd):
         return f"{os.path.basename(sys.executable)} -c {self.quote(cmd)}"

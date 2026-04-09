@@ -35,18 +35,18 @@ $env:VIRTUAL_ENV = $VIRTUAL_ENV
 
 New-Variable -Scope global -Name _OLD_VIRTUAL_PATH -Value $env:PATH
 
-$env:PATH = "$env:VIRTUAL_ENV/__BIN_NAME____PATH_SEP__" + $env:PATH
+$env:PATH = "$env:VIRTUAL_ENV/" + __BIN_NAME__ + __PATH_SEP__ + $env:PATH
 if (!$env:VIRTUAL_ENV_DISABLE_PROMPT) {
     function global:_old_virtual_prompt {
         ""
     }
     $function:_old_virtual_prompt = $function:prompt
 
-    if ("__VIRTUAL_PROMPT__" -ne "") {
+    if (__VIRTUAL_PROMPT__ -ne "") {
         function global:prompt {
             # Add the custom prefix to the existing prompt
             $previous_prompt_value = & $function:_old_virtual_prompt
-            ("(__VIRTUAL_PROMPT__) " + $previous_prompt_value)
+            ("(" + __VIRTUAL_PROMPT__ + ") " + $previous_prompt_value)
         }
     }
     else {

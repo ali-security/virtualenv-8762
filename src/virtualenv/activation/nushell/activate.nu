@@ -9,9 +9,9 @@ def-env activate-virtualenv [] {
     }
 
     let is_windows = ((sys).host.name | str downcase) == 'windows'
-    let virtual_env = '__VIRTUAL_ENV__'
-    let bin = '__BIN_NAME__'
-    let path_sep = '__PATH_SEP__'
+    let virtual_env = __VIRTUAL_ENV__
+    let bin = __BIN_NAME__
+    let path_sep = __PATH_SEP__
     let path_name = if $is_windows {
         if (has-env 'Path') {
             'Path'
@@ -43,10 +43,10 @@ def-env activate-virtualenv [] {
     let new_path = ($old_path | prepend $venv_path | str collect $path_sep)
 
     # Creating the new prompt for the session
-    let virtual_prompt = if ('__VIRTUAL_PROMPT__' == '') {
+    let virtual_prompt = if (__VIRTUAL_PROMPT__ == '') {
         $'(char lparen)($virtual_env | path basename)(char rparen) '
     } else {
-        '(__VIRTUAL_PROMPT__) '
+        $'(char lparen)(__VIRTUAL_PROMPT__)(char rparen) '
     }
 
     # Back up the old prompt builder
@@ -89,4 +89,4 @@ def-env activate-virtualenv [] {
 activate-virtualenv
 
 alias pydoc = python -m pydoc
-alias deactivate = source '__DEACTIVATE_PATH__'
+alias deactivate = source __DEACTIVATE_PATH__
